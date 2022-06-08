@@ -1,0 +1,40 @@
+{% extends 'base_uinfo.html' %}
+{% load static %}
+{% block title %}教材选用系统{% endblock %}
+
+{% block content %}
+
+        <div class="right">
+            <div>
+                <div class="head" style="border:1px solid #eaeaea;">
+                    <h1>个人信息</h1>
+                </div>
+                <!-- 个人信息下部分 -->
+                <div class="inforcon">
+                    <div class="imgname">
+                        <img src="{% static 'img/user.png' %}">
+                        <div class="usernum">
+                            <div class="lh">
+                                账号：<input class="borderno" type="text" name="username" readonly="readonly" value="{{ request.user.username }}"/><br/>
+                            </div>
+                            <div class="lh">
+                                邮箱：<input class="borderno" type="text" name="email" readonly="readonly" value="{{ request.user.email }}"/><br/>
+                            </div>
+                            <div class="lh">
+                                学院：<input class="borderno" type="text" name="college" readonly="readonly" value="{{ request.user.college }}"/><br/>
+                            </div>
+                            <div class="lh">
+                                最近登录时间：<input class="borderno" type="text" name="last_login" readonly="readonly" value="{{ request.user.last_login }}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 点击弹出修改密码框按钮 -->
+                    <div id="login-header">
+                        <a id="adminBtn" href="{% url 'users:pwd_reset' %}">修改密码</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

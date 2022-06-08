@@ -1,0 +1,794 @@
+.bradius{
+    border-radius:7px;	/*角圆弧度*/
+}
+.ml{
+	margin-left: 10px;	/*左间距*/
+}
+.mr{
+	margin-right: 10px;		/*右间距*/
+}
+
+/* 主体宽度 */
+body{
+    width:70%;
+    height:auto;
+    position:relative;
+    left:15%;
+	opacity:1;
+}
+
+/* 头部 */
+.headers{
+   width:100%;
+    height: 50px;
+    background-color: white;
+    padding-top: 10px;
+    text-align: center;		/* 文字居中 */
+	display:flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+/* logo大小 */
+.logo_size{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    top: -10px;
+    /*background-color:yellowgreen;*/
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.logo_size img{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+/* 教材选用系统 */
+.text{
+    width: 200px;
+    height:60px;
+	margin-top: -10px;
+    font-size: 22px;
+    line-height:60px;
+	font-weight: bolder;
+	color: 	#636363;
+}
+/* 登陆注册 */
+.logins{
+	width: 150px;
+	height: auto;
+	display: flex;
+	/* 排列方向 */
+	flex-direction: row;
+	/* 对齐方式 */
+	justify-content: flex-end;
+	/* 在交叉轴上如何对齐 */
+	align-items: center;
+	line-height: 40px;
+	margin-right: 20px;
+}
+.logins a{
+	text-decoration: none;	/*去掉下划线*/
+}
+.logins a:hover{
+	text-decoration: none;	/*去掉下划线*/
+}
+/* | 间隔线 */
+.textcent{
+	color: #0080bc;
+	margin-bottom: 2px;
+}
+/* 登录 */
+.logins .login:hover{
+	color: #0080BC;
+	text-decoration: none;	/*去掉下划线*/
+}
+.logins .login-1{
+	font-size: 13px;
+	color: #02087f;			/*颜色*/
+}
+/* 注册 */
+.logins .register:hover{
+	color: #0080BC;
+	text-decoration: none;	/*去掉下划线*/
+}
+.logins .register{
+	font-size: 13px;
+	text-decoration: none;
+	color: #02087f;
+}
+/*移入下拉出现个人中心*/
+.personal{
+	display: inline-block;
+	height: auto;
+    float: right;
+    position: relative;
+}
+.personal .user{
+	/*display: flex;*/
+	float: right;
+	width: 200px;
+	/*margin-left: 70px;*/
+	margin-right: -30px;
+}
+.personal .userdetail{
+	display: none;
+    position: absolute;
+    right: 0;
+    top: 38px;
+    background: #fff;
+    padding: 10px;
+    z-index: 99;
+    border: 1px solid #ccc;
+    border-top: 0;
+}
+.personal:hover .userdetail{display: block}
+
+.userdetail .user{
+	display: flex;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+}
+.userdetail .user img{
+	margin-left: -35px;
+}
+.userdetail .user h2{
+	font-size: 17px;
+	margin-left: 20px;
+	margin-top: 8px;
+/*	style="font-size: 14px;margin-top: 14px"*/
+}
+.userdetail .user p{
+	margin-left: 20px;
+	margin-top: -5px;
+}
+/*个人中心 退出按钮*/
+.personal .userdetail .btn {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+    clear: both;
+	display: flex;
+	justify-items: center;
+	flex-direction: row;
+	justify-content: center;
+}
+/*进入个人中心，退出*/
+.personal .userdetail .btn a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #a4a4a4;
+    color: #fff;
+	text-decoration: none;
+}
+/*鼠标悬停效果*/
+.personal .userdetail .btn a:hover {
+    background: #4FB137;
+	text-decoration:none;
+}
+/*个人中心*/
+.personal .userdetail .btn a.fl {
+    width: 60%;
+	font-size: 10px;
+	border-radius: 3px;
+	padding-right: 4px;
+	padding-left: 4px;
+
+}
+/*退出*/
+.personal .userdetail .btn a.fr {
+    width: 32%;
+	margin-left: 10px;
+	font-size: 10px;
+	border-radius: 3px;
+}
+
+/* Header - end */
+
+
+
+/* Body - start */
+.body{
+	width:100%;
+	height:auto;
+	position:relative;
+	border: 1px solid #ffff00;
+}
+/* 搜索查询 */
+.search{
+	display: flex;
+	flex-direction: row;		/* 排列方向 */
+	justify-content: space-between;		/* 对齐方式 */
+	align-items: center;		/* 在交叉轴上如何对齐 */
+	margin-top: 20px;
+}
+.se_input{
+	width: 67%;
+	height: auto;
+	display: flex;
+	flex-direction: row;		/* 排列方向 */
+	justify-content: space-between;		/* 对齐方式 */
+	align-items: center;		/* 在交叉轴上如何对齐 */
+}
+/* 输入框样式 */
+.se_input input{
+	width: 240px;	/*设置输入框宽度*/
+	height: 30px;	/*设置输入框高度*/
+	border-radius: 4px;
+}
+/* 输入框内字体大小 */
+input::-webkit-input-placeholder {
+    /* placeholder颜色 */
+    color: #aab2bd;
+}
+.se_btn{
+	width: 33%;		
+	height: auto;	
+	display: flex;
+	flex-direction: row;		/* 排列方向 */
+	justify-content: flex-end;		/* 对齐方式 */
+	align-items: center;		/* 在交叉轴上如何对齐 */
+}
+/* new - 整体搜索栏 */
+#search-2022{
+	height: 60px;
+	position: relative;
+}
+/*搜索栏整体*/
+#search-2022 .form{
+	height: 40px;
+	width: auto;
+	margin-left: 27%;
+}
+/*输入框*/
+#search-2022 .text{
+	margin: 0 auto;
+	width: 400px;	/*输入框长度*/
+	float: left;
+	height: 36px;
+	padding: 4px;
+	border-width: 2px 0 2px 2px;
+    border-color: #f30213;
+    border-style: solid;
+    outline: 0;
+    font-size: 12px;
+	margin-top: 10px;
+}
+/*输入框*/
+#search-2022 .blurcolor{
+	color: #999;
+}
+/*搜索按钮*/
+#search-2022 .search-button{
+	float: left;
+    width: 80px;
+    height: 36px;
+    font-family: tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    background: #f30213;
+    border: none;
+    border-radius: 0;
+    line-height: 1;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+	margin-top: 10px;
+}
+.cw-icon{
+	position:relative;
+}
+
+
+
+/* Body - end */
+
+/* Buttom - start */
+.bottom{
+	width:100%;
+	height:20%;
+	position:relative;
+	border-top: 2px solid #636363;
+	background-color: #adb8bc;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Buttom - end */
+
+
+
+/*
+	筛选展示教材样式
+*/
+ul, li{
+	padding: 0;
+    list-style-type: none;	/*去掉前面的小黑点*/
+    border: 0;
+}
+/*  去除下划线*/
+.tools_box a{
+    color: #555;	/*  标签内字体颜色  */
+	text-decoration: none;
+}
+/*  悬停时去除下划线*/
+.tools_box a:hover{
+    text-decoration: none;
+    outline: none;
+	color: #fd5115;
+}
+/*  最外层样式  */
+.tools_box{
+	background: #fe7c2c;
+    position: relative;		/*  定位  */
+    z-index: 999;
+    margin: 0 auto;
+    width: 100%;
+}
+/*  第二层样式  */
+.tools_box .top{
+	width:100%;
+	height:30px;
+    border: solid 1px #efefef;
+    line-height: 30px;
+    background-color: #f5f5f5;
+}
+/* 排序标签 */
+.tools_box .sorting_box li {
+    float: left;
+    background-position: right -97px;
+    cursor: pointer;
+    margin-left: -1px;
+    background-repeat: no-repeat;
+    height: 30px;
+}
+
+/*  选中其中一个标签块后样式  */
+.tools_box .sorting_box .active{
+	border-bottom: 2px solid #fd5115;
+    color: #fd5115;
+    font-weight: bold;
+}
+
+/*  a标签  */
+.tools_box .sorting_box a.sorting_box_a {
+	width: 130px;
+	display: block;
+    text-align: center;
+    padding: 2px 10px 0;
+    line-height: 28px;
+    font-size: 12px;
+	/*background: url(../img/dian.png) no-repeat 0 5px;*/
+	/*background-position: right;*/
+}
+/*  a标签内的img  */
+.tools_box .top .sorting_box a img {
+	width: 10px;
+	height: 10px;
+	margin-left: 2px;
+}
+.tools_box .top .sorting_box a img:hover {
+	width: 10px;
+	height: 10px;
+	margin-left: 2px;
+}
+
+
+/*
+	用个人中心
+*/
+.blank{
+	width: 100%;
+	height: 100px;
+	border: 1px solid #E3E3E3;
+	background-color: rgba(166, 226, 152, 0.34);
+}
+.userall{
+	width: 100%;
+	height: auto;
+	border: 1px solid #E3E3E3;
+	background-color: #c0d141;
+}
+/*个人资料*/
+.userall .left{
+	width: 210px;
+    float: left;
+    background: #f8f8f8;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+.userall .left ul{
+	width: 100%;
+    height: 109px;
+    line-height: 60px;
+    font-size: 16px;
+}
+.userall .left li{
+	width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+	padding-left: 30px;
+}
+.userall .left .active2{
+	border-bottom: 1px solid #E3E3E3;
+}
+.userall .left li:hover{
+	background-color: white;
+}
+
+/*个人信息收藏*/
+.right .head{
+	padding-top: 12px;
+	padding-left: 12px;
+	padding-bottom: 12px;
+}
+.right .head h1{
+	font-size: 22px;
+	font-weight: normal;
+	display: inline;
+    color: rgb(113, 113, 113);
+}
+.wp{
+	width: 210px;
+    float: left;
+    background: #f8f8f8;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+.userall .right{
+	width: 78%;
+    float: right;
+    overflow: hidden;
+}
+
+/*头像账号*/
+.imgname{
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	border-bottom: 1px solid #eaeaea;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/*账号显示*/
+.usernum{
+	font-size: 23px;
+}
+.usernum .lh{
+	height:40px;
+	line-height:40px;
+}
+.usernum input{
+	color: #585858;
+}
+
+.inforcon .imgname img{
+	width: 100px;
+	height: 100px;
+	margin-right: 70px;
+}
+.inforcon .imgname input.borderno{
+	border: 0;
+    margin-right: 10px;
+    width: 252px !important;
+    display: inline;
+    text-indent: 0;
+	font-size: 20px;
+}
+
+/*修改密码*/
+.ochpwd{
+	margin-top:30px;
+	width: 100px;
+	height: 40px;
+	background: rgb(231, 231, 231);
+	text-align: center;
+	/*padding-top: 10px;*/
+	border-radius: 4px;
+	margin: 40px 0 20px 35%;
+}
+.chpwd{
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+.chpwd:hover{
+	text-decoration:none;
+}
+.chpwd:hover{
+	background: rgba(30, 220, 45, 0.48);
+	border-radius: 4px;
+}
+/*去除下划线 鼠标移入到个人中心框时变色*/
+.active2 a:hover{
+	background: #fff url("../img/arrow_g.png") no-repeat 95% center;
+    border-left: 2px solid #fff;
+    /*background-color: #f2f2f2;*/
+	text-decoration:none;
+}
+
+/* 弹出登陆框按钮 */
+#login-header{
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#login-header a{
+	font-size: 15px;
+	text-decoration: none;
+	color: black;
+	display: block;
+}
+
+/* 修改密码框框主体 */
+.login{
+	position: absolute;
+	width: 512px;
+	/*height: 284px;*/
+	height: 320px;
+	z-index: 9999;
+	display: none;
+	background-color: white;
+	/* 这里要注意绝对定位的盒子怎么在屏幕显示居中 */
+	left: 29%;
+	top: 120%;
+	/*margin-left: -166px;*/
+	/*margin-top: -202px;*/
+	/*border: 1px solid gray;*/
+}
+/* 修改密码框标题 */
+.login-title{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 20px;
+	cursor: move;
+}
+.login-title span a{
+	text-decoration: none;
+	border: 1px solid gray;
+	font-size: 12px;
+	color: black;
+	border-radius: 20px;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	position: absolute;
+	top: -20px;
+	right: -20px;
+}
+
+/* 登陆表单 */
+.login-input{
+	margin: 20px 0px 30px 20px;
+}
+.login-input label{
+	float: left;
+	height: 35px;
+	line-height: 35px;
+	width: 90px;
+	padding-left: 10px;
+	text-align: right;
+	font-size: 14px;
+}
+.login-input input.list-input{
+	height: 35px;
+	line-height: 35px;
+	width: 350px;
+	text-indent: 5px;
+}
+/* 登陆框登陆按钮 */
+.loginSubmit{
+	width: 260px;
+	height: 40px;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: white;
+	margin-left: 140px;
+}
+
+/* 遮盖层 */
+.bg{
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	margin-left: -30.5%;
+	top: 0px;
+	position: fixed;
+	opacity: 0.3;
+	-webkit-opacity: 0.3;
+	-moz-opacity: 0.3;
+	display: none;
+}
+
+/* 个人中心 */
+.collection{
+	width: 100%;
+    overflow: hidden;
+	border: 1px solid #EAEAEA;
+	margin-top: 10px;
+}
+.collection .tbookli{
+	width: 30%;
+    height: 350px;
+    float: left;
+    margin-top: 8px;
+    transition: all 0.5s;
+    overflow: hidden;
+    margin-left: 14px;
+    margin-right: 10px;
+    text-decoration:none;
+	border: 1px solid #EAEAEA;
+	border-radius: 3px;
+	margin-bottom: 8px;
+}
+/* 一个块*/
+.tbookli a {
+    text-decoration: none;  /*去除下划线*/
+    -webkit-tap-highlight-color: transparent;
+}
+.tbookli a:hover{
+    text-decoration: none;
+    background-color: #fafafa;
+	color: #1213a3;
+}
+/* 教材 */
+.collection .tbookli p {
+    padding: 0 12px;
+}
+/*教材图片*/
+.collection .tbookli img {
+    width: 180px;
+    height: 190px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+/*教材名*/
+.collection .tbookli .p1 {
+    font-size: 13px;
+    color: #333333;
+    margin-top: -2px;
+    line-height: 24px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    height: 24px;
+}
+/*作者出版社*/
+.collection .tbookli .p2 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/*出版社*/
+.collection .tbookli .p3 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;    /*段落中的文本不进行换行*/
+    text-overflow: ellipsis;    /*文本溢出，显示省略符号...*/
+    overflow: hidden;   /*文本溢出，内容会被修剪*/
+}
+
+/*评论数和收藏并排显示*/
+.collection .tbookli .db{
+    display: flex;
+    justify-content:space-between;
+}
+/*评论数*/
+.collection .tbookli .comment{
+    /*margin-left: 12px;*/
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;    /*段落中的文本不进行换行*/
+}
+/*收藏*/
+.collection .tbookli .collec {
+    opacity: 0.7; /* 不透明度 */
+    font-size: 10px;
+    float: right;
+    display: block;
+}
+.collection .tbookli .collec:hover {
+    color: #2e6da4;
+}
+
+/*  分页器  */
+.sorting_box li.pages{
+	float: right;
+	margin-right: 20px;
+}
+.sorting_box li a{
+	margin-left: 10px;
+	margin-right: 20px;
+}
+/*  当前页码和最后一页*/
+.pages ul li.pagesnum{
+	height:30px;
+	line-height:30px;
+	margin-right: 10px;
+	font-size:10px;
+}
+
+
+/*  搜索结果文字  */
+.conteiner .search_result{
+	width:100%;
+	height:45px;
+	line-height:45px;
+	text-align: center;
+	font-size: 25px;
+}
+/*  a 标签*/
+.conteiner .search_result a{
+	text-decoration:none;
+	color: #4a4a4a;
+}
+
+
+
+
+/* 未登录，提示登录 */
+.defaults{
+	width:100%;
+	height:100%;
+	text-align: center;
+}
+.default-login{
+	width:300px;
+	height:50px;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	margin: 0 auto;
+	margin-top: 150px;
+}
+.default-btn{
+	width:100px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	/*border-style: solid;*/
+	background: none;
+	border-color: #1B9AF7;
+	border-radius: 3px;
+	border: 1px solid;
+}
+.default-btn:hover{
+	color: #fff;
+	background: #0a90f5;
+	text-decoration: none;
+}
+
+
+
+
+
+

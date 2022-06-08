@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}教材选用系统{% endblock %}
+
+{% block content %}
+<div class="conteiner">
+    <!-- 教材根据默认条件 和 特定条件展示 -->
+    <div class="tbooklist">
+
+        <!-- 图书展示列表 使用遍历将教材展示到页面中  样式在webDemo -->
+        {% for book in pages %}
+            <a class="tbookli" href="{{ book.b_href }}">
+                <p>
+                     <img src="{{ book.src }}"  alt onerror="this.src='#'" />
+                </p>
+                <p class="p1" title="{{ book.name }}">{{ book.name }}</p>
+                <p class="p2">
+                    作者：{{ book.author }}
+                </p>
+                <p class="p3">出版社：{{ book.press }}</p>
+                <p class="p3">出版时间：{{ book.date }}</p>
+                <div data-value="0" class="db">{# btn-coll #}
+                    <div class="comment">{{ book.comment }}条评论</div>    {# 显示评论数 #}
+                    <div class="comment">好评率{{ book.praise }}%</div>
+                    <div class="comment">价格：{{ book.price }}</div>
+                </div>
+            </a>
+        {% endfor %}
+
+    </div>
+
+    <!-- 分页页码 -->
+    <div class="footer-1">  {# 在webdemo #}
+        <ul>
+            {% if  pages.has_previous %}    {# 判断如果有上一页 #}
+                <li class="long">
+                    <a href="/index/?pagenum={{ pages.previous_page_number }}&books={{ books }}">上一页</a>
+                </li>
+            {% endif %}
+            {% for num in pages.paginator.page_range %}
+                {% if num == 1 %}
+                    <li class="active">
+                        <a href="/index/?pagenum={{ num }}&books={{ books }}">{{ num }}</a>
+                    </li>
+                {% elif num == 2 %}
+                    <li class="active">
+                        <a href="/index/?pagenum={{ num }}&books={{ books }}">{{ num }}</a>
+                    </li>
+                {% elif num == 3 %}
+                    <li class="active">
+                        <a href="/index/?pagenum={{ num }}&books={{ books }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <li class="active"><a>...</a></li>
+            <li class="active">
+                <a href="/index/?pagenum={{ total_pages }}&books={{ books }}">{{ total_pages }}</a>
+            </li>    {# 尾页 #}
+
+            {% if pages.has_next %}     {# 判断如果有下一页 #}
+                <li class="long">
+                    <a href="/index/?pagenum={{ pages.next_page_number }}&books={{ books }}">下一页</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- 底部 -->
+    <div style="margin-top: 40px;height: 40px"></div>
+</div>
+{% endblock %}

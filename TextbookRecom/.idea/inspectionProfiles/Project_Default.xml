@@ -1,0 +1,38 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myCustomPropertiesEnabled" value="true" />
+      <option name="myIgnoreVendorSpecificProperties" value="false" />
+      <option name="myCustomPropertiesList">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="absolute" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="13">
+            <item index="0" class="java.lang.String" itemvalue="django-simpleui" />
+            <item index="1" class="java.lang.String" itemvalue="django-appconf" />
+            <item index="2" class="java.lang.String" itemvalue="django-compressor" />
+            <item index="3" class="java.lang.String" itemvalue="django-jsonfield" />
+            <item index="4" class="java.lang.String" itemvalue="icecola" />
+            <item index="5" class="java.lang.String" itemvalue="django" />
+            <item index="6" class="java.lang.String" itemvalue="django-filter" />
+            <item index="7" class="java.lang.String" itemvalue="django-redis" />
+            <item index="8" class="java.lang.String" itemvalue="django-registration-redux" />
+            <item index="9" class="java.lang.String" itemvalue="django-model-utils" />
+            <item index="10" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="11" class="java.lang.String" itemvalue="django-filters" />
+            <item index="12" class="java.lang.String" itemvalue="Pillow" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

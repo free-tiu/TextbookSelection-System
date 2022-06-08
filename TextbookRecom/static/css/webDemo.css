@@ -1,0 +1,240 @@
+
+.screenitem {
+    overflow: hidden;
+}
+/*  教材分类  */
+.classify{
+}
+/*  学科分类、出版社  */
+.screenitem{
+    width: 100%;
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+.screenitem .siteml {
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #676767;
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+    display: block;
+
+}
+/* 分类内容样式 */
+.screenitem .sitemr,.sitemr1{
+    width: 75%;
+    /*margin-left: 10px;*/
+/*处理换行*/
+    word-wrap:break-word;
+    overflow:hidden;
+    flex-wrap: wrap;
+/*处理换行 - end*/
+    height: auto;
+    min-height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #a5a5a5;
+    float: left;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+    justify-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+/*  遍历学科分类、出版社  */
+/*  遍历出版社名称  */
+.screenitem .sitemr a{
+    /*去除下划线*/
+    width: 180px;
+    text-decoration:none;
+    display: block;
+    text-align: center;
+    margin-right: 5px;
+    font-size: 14px;
+}
+.screenitem .sitemr a:hover{
+    /*text-decoration:underline;*/
+}
+/*  更多  */
+.screenitem .sitemrr{
+    height: 35px;
+    float: left;
+    line-height: 35px;
+    color: #083d7b;
+    cursor: pointer;
+    margin-left: 45px;
+    text-align: center;
+    margin-right: 10px;
+}
+.screenitem .sitemrr:hover{
+    color: #246fff;
+    /*text-decoration:underline;*/
+}
+.screenitem .sitemrr1{
+    height: 35px;
+    float: left;
+    line-height: 35px;
+    color: #083d7b;
+    cursor: pointer;
+    margin-left: 40px;
+    text-align: center;
+}
+.screenitem .sitemrr1:hover{
+    color: #246fff;
+    /*text-decoration:underline;*/
+}
+
+
+/* 图书列表 */
+.tbooklist {
+    margin-top: 10px;
+    width: 100%;
+}
+.tbooklist .tbookli {
+    /*width: 224px;*/
+    width: 22%;
+    height: 350px;
+    float: left;
+    margin-top: 5px;
+    transition: all 0.5s;
+    overflow: hidden;
+    margin-left: 18px;
+    margin-right: 10px;
+    text-decoration:none;
+    padding-bottom: -10px;
+}
+/* 一个块*/
+.tbooklist a {
+    text-decoration: none;  /*去除下划线*/
+    -webkit-tap-highlight-color: transparent;
+}
+.tbooklist a:hover{
+	/*text-decoration:underline;*/
+    text-decoration: none;
+    background-color: #fafafa;
+}
+/* 教材 */
+.tbooklist .tbookli p {
+    padding: 0 12px;
+}
+/*教材图片*/
+.tbooklist .tbookli img {
+    width: 180px;
+    height: 190px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+/*教材名*/
+.tbooklist .tbookli .p1 {
+    font-size: 13px;
+    color: #333333;
+    margin-top: -2px;
+    line-height: 24px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    height: 24px;
+}
+/*作者出版社*/
+.tbooklist .tbookli .p2 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/*出版社*/
+.tbooklist .tbookli .p3 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;    /*段落中的文本不进行换行*/
+    text-overflow: ellipsis;    /*文本溢出，显示省略符号...*/
+    overflow: hidden;   /*文本溢出，内容会被修剪*/
+}
+.conteiner{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/*评论数和收藏并排显示*/
+.tbooklist .tbookli .db{
+    display: flex;
+    justify-content:space-between;
+}
+/*评论数*/
+.tbooklist .tbookli .comment{
+    margin-left: 12px;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #999999;
+    margin-top: -4px;
+    white-space: nowrap;    /*段落中的文本不进行换行*/
+}
+/*收藏*/
+.tbooklist .tbookli .collec {
+    opacity: 0.7; /* 不透明度 */
+    font-size: 10px;
+    float: right;
+    display: block;
+}
+.tbooklist .tbookli .collec:hover {
+    color: #2e6da4;
+}
+
+
+
+/*  分页  */
+.footer-1{
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    left: 13%;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+.footer-1 ul li{
+    list-style:none; /* 将默认的列表符号去掉 */
+    padding:0; /* 将默认的内边距去掉 */
+    margin:0; /* 将默认的外边距去掉 */
+    float:left; /* 往左浮动 */
+    display:block; /* 将链接设为块级元素 */
+    color: #083d7b; /* 设置文字颜色 */
+    margin-top: 5px;
+}
+.footer-1 ul li a{
+    width:50px; /* 设置宽度 */
+    height:30px; /* 设置高度 */
+    line-height: 30px;  /*  设置行高  */
+    text-align: center; /* 文字居中 */
+    display:block; /* 将链接设为块级元素 */
+    background-color: #f6f6f6; /* 设置背景色 */
+    color:#083d7b; /* 设置文字颜色 */
+    text-decoration:none; /* 去掉下划线 */
+    margin-top: 5px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+.footer-1 ul li a:hover{
+    text-decoration:none; /* 去掉下划线 */
+    /*background-color: #083d7b; !* 设置背景色 *!*/
+    color:#083d7b; /* 设置文字颜色 */
+    border-radius: 4px;
+}
+
+
+
+

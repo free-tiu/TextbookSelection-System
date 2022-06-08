@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+
+        <base href="/">
+        <link rel="stylesheet" href="{% static 'css/freestyle.css' %}">
+        <link rel="stylesheet" href="{% static 'css/webDemo.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        {% block mycss %}{% endblock %}
+        <!-- jQuery -->
+        <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+        <!-- Bootstrap 核心 JavaScript 文件 -->
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <!-- 样式 -->
+        <style>
+            /*  猜你喜欢  */
+            .guess{
+                width: 100%;
+                background-color: rgba(226, 242, 239, 0.53);
+                margin-bottom: 30px;
+            }
+            /* 猜你喜欢 文字 */
+            .guess-text{
+                text-align: center;
+                margin: 20px;
+                font-size: 18px;
+                color: rgba(8, 14, 108, 0.7);
+            }
+
+            .guess h6{
+                margin-left: 20px;
+            }
+
+            .guess .tbookli{
+                margin-bottom: 20px;
+            }
+            /* index页面底部 */
+            .index-buttom{
+                width: 100%;
+                height: 50px;
+                line-height: 25px;
+                text-align: center;
+                border-top: 2px dashed #ddd;
+                padding-top: 10px;
+                font-size: 12px;
+                color: #81918e;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <div>
+            <!-- header - start   头部导航栏  -->
+            <div class="bodyTop bradius">
+                <div class="headers bradius">
+                    <!-- logo -->
+                    <div class="logo_size bradius">
+                        <a href="{% url 'users:index' %}">
+                            <img class="bradius" src="{% static 'img/book.png' %}">
+                        </a>
+                    </div>
+                    <!--  系统名称  -->
+                    <div class="text">教材选用推荐系统</div>
+                    <!-- 登录后跳转 -->
+                    {% if request.user.is_authenticated %}
+                        <div class="personal">
+                            <dl class="user">
+                                {{ request.user.username }}
+                                <img src="{% static 'img/top_down.png' %}" alt="悬停显示"/>
+                                <img width="20" height="20" src="{% static 'img/user.png' %}" alt=""/>
+                            </dl>
+                            {# 先隐藏 #}
+                            <div class="userdetail">
+                                <div class="user">
+                                    <img width="50px" height="50px" src="{% static 'img/user.png' %}" alt=""/>
+                                    <h2>{{ request.user.username }}</h2>
+                                </div>
+                                <div class="btn">
+                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">个人中心</a>
+                                    <!--  点击退出后会跳转到系统首页  -->
+                                    <a class="fr" href="{% url 'users:user_logout' %}">退出</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- 登录/注册 -->
+                        <div class="logins">
+                            <a class="login-1 mr" href="{% url 'users:user_login' %}">登录</a>
+                            <div class="textcent">|</div>
+                            <a class="register ml" href="{% url 'users:register' %}">注册</a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- header - end -->
+
+            {% block middle %}
+
+                <!-- body-start -->
+                <div class="body">
+                    <!--  教材搜索  -->
+                    <div id="search-2022" style="margin-top: 20px;margin-bottom: 20px;">
+                        <div class="form">      <!--搜索栏整体-->
+                            <!-- method=“get”代表搜索的关键字以?q=搜索关键字的形式传递后台 -->
+                            <form method="get" action="/search">
+                                {% csrf_token %}
+                                <!--输入框-->
+                                <!-- input标签的name='q',代表搜索的参数，为固定写法，不能修改为其他值。在视图类haystack.views.py中有说明是怎么接受该搜索关键字的 -->
+                                <input type="text" class="text blurcolor" placeholder="  请 输 入 教 材 名 称" name="q" value="{{ query|default:'' }}">
+                                <!--搜索按钮-->
+                                <input class="search-button cw-icon" type="submit" name="" value="搜索">
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- 教材出版社分类 -->
+                    <div class="classify" id="clicktopage">
+                        <!-- 出版社 -->
+                        <div class="screenitem">
+                            <div class="siteml" data-type="1">出&nbsp;&nbsp;版&nbsp;&nbsp;社</div>
+                            <div class="sitemr" style="height:35px;overflow: hidden;">
+                                <!--  使用遍历将出版社分类数据展示到页面上  -->
+                                {% for press in allpress %}
+
+                                    {# <!--  {% ifequal %} 标签比较两个值，当他们相等时，显示在 {% ifequal %} 和 {% endifequal %} 之中所有的值  --> #}
+                                    <!--  比较 current_press 和 press.p_name 两个变量  -->
+                                    <span rel="" {% ifequal current_press press.p_name %} style="background: antiquewhite;"{% endifequal %}>
+
+                                        <a href="/search?con_books={{ con_books|default:'' }}&q={{ query|default:'' }}&press={{ press.p_name }}"
+                                           title="{{ press.p_name }}">{{ press.p_name }}</a>
+
+                                    </span>
+                                {% endfor %}
+                            </div>
+                            <div class="sitemrr">更多</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 条件筛选 -->
+                <div class="tools_box bg_change" tb_name="一般排序汇总">
+                    <div class="top">
+                        <ul class="sorting_box">
+
+                            <!--  当条件筛选栏不进行点击，或者点击默认排序时  -->
+                            <li {% if con_books == '' %}class="active"{% endif %}>
+                                <a class="sorting_box_a" href="/search?q={{ query|default:'' }}" title="点击后恢复默认排序">默认排序</a>
+                            </li>
+
+                            <!--  当条件筛选栏点击到评论数时，传值comment到 /users/views.py 中 get_queryset 进行判断并展示相应教材  -->
+                            <li {% if con_books == 'comment' %}class="active"{% endif %}>
+                                <a class="sorting_box_a" href="/search?con_books=comment&q={{ query|default:'' }}&press={{ current_press|default:'' }}" title="点击后按评论数由高到低">
+                                    评论数<img src="{% static 'img/down.png' %}"/>
+                                </a>
+                            </li>
+
+                            <!--  当条件筛选栏点击到好评率时，传值praise到 /users/views.py 中 get_queryset 进行判断并展示相应教材  -->
+                            <li {% if con_books == 'praise' %}class="active"{% endif %}>
+                                <a class="sorting_box_a" href="/search?con_books=praise&q={{ query|default:'' }}&press={{ current_press|default:'' }}" title="点击后按好评率由高到低">
+                                    好评率<img src="{% static 'img/down.png' %}"/>
+                                </a>
+                            </li>
+
+                            {# 价格排序 #}
+                            <li {% if con_books == 'price' %}class="active"{% endif %}>
+                                <a class="sorting_box_a" href="/search?con_books=price&q={{ query|default:'' }}&press={{ current_press|default:'' }}" title="点击后按价格由高到低">
+                                    价格<img src="{% static 'img/down.png' %}"/>
+                                </a>
+                            </li>
+
+                            <!--  当条件筛选栏点击到规划教材时，传值guihua到 /users/views.py 中 get_queryset 进行判断并展示相应教材  -->
+                            <li {% if con_books == 'guihua' %}class="active"{% endif %}>
+                                <a class="sorting_box_a" href="/search?con_books=guihua&q={{ query|default:'' }}&press={{ current_press|default:'' }}" title="点击后展示规划教材">规划教材</a>
+                            </li>
+
+                            <!--  导航栏中的分页器  -->
+                            <!--
+{#                            <li class="pages">#}
+{#                                <ul>#}
+{#                                    {% if page.has_previous %}    {# 判断如果有上一页 #}
+{#                                        <li>#}
+{#                                            <a href="/search?q={{query}}&page={{ page.previous_page_number }}">#}
+{#                                                <img src="{% static 'img/left.png' %}" alt="上一页"/>#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                    {% endif %}#}
+{##}
+{#                                    <!--  获取当前页码-->#}
+{#                                    <li class="pagesnum">{{ page_number }}</li>#}
+{#                                    <!--  分隔符  -->#}
+{#                                    <li style="margin-left: 10px;margin-right: 10px;">/</li>#}
+{#                                    <!--  获取总页数  -->#}
+{#                                    <li class="pagesnum">{{ total_pages }}</li>#}
+{##}
+{#                                    {% if page.has_next %}     {# 判断如果有下一页 #}
+{#                                        <li>#}
+{#                                            <a href="/search?q={{query}}&page={{ page.next_page_number }}">#}
+{#                                                <img src="{% static 'img/right.png' %}" alt="下一页"/>#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                    {% endif %}#}
+{##}
+{#                                </ul>#}
+{#                            </li>#}
+                              -->
+                        </ul>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+            {% block buttom %}{% endblock %}
+
+            <script>
+                {# 点击展开收起bob #}
+                handle();
+
+                function handle() {
+                    {#学科分类#}
+                    $(".sitemrr1").on("click", () => {
+                        console.log($(".sitemrr1"));
+                        if ($(".sitemrr1").text() == '更多') {
+                            $(".sitemrr1").text("收起");
+                            $(".sitemr1").css({height: "auto"})
+                        } else {
+                            $(".sitemrr1").text("更多");
+                            $(".sitemr1").css({height: "35px"})
+                        }
+                    })
+                    {# 出版社#}
+                    $(".sitemrr").on("click", () => {
+                        console.log($(".sitemrr"));
+                        if ($(".sitemrr").text() == '更多') {
+                            $(".sitemrr").text("收起");
+                            $(".sitemr").css({height: "auto"})
+                        } else {
+                            $(".sitemrr").text("更多");
+                            $(".sitemr").css({height: "35px"})
+                        }
+                    })
+                }
+            </script>
+        </div>
+    </body>
+</html>

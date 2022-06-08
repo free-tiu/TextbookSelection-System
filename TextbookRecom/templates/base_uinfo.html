@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+
+        <base href="/">
+        <link rel="stylesheet" href="{% static 'css/userinfo.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/freestyle.css' %}" >
+		<link rel="stylesheet" href="{% static 'css/webDemo.css' %}" >
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        {% block mycss %}{% endblock %}
+		<!-- jQuery -->
+		<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+		<!-- Bootstrap 核心 JavaScript 文件 -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/myLayer.js' %}"></script>
+
+        <script>
+            function openWindow() {
+                new MyLayer({
+                    top:"10%",
+                    left:"10%",
+                    width:"80%",
+                    height:"80%",
+                    title:"修改密码",
+                    content:"操作成功"
+                }).openLayer();
+            }
+        </script>
+    </head>
+
+
+    <body>
+		<div>
+            {% if request.user.is_authenticated %}
+			<!-- header-start --><!-- 头部导航栏 -->
+			<div class="bodyTop bradius">
+				<div class="headers bradius">
+					<!-- logo -->
+					<div class="logo_size bradius">
+                        <a href="{% url 'users:index' %}">
+                            <img class="bradius" src="{% static 'img/book.png' %}">
+                        </a>
+					</div>
+
+					<div class="text">教材选用系统</div>
+                    <!-- 登录后跳转 -->
+{#                    {% if request.user.is_authenticated %}#}
+                        <div class="personal">
+                            <dl class="user">
+                                {{ request.user.username }}
+                                <img class="down fr" src="{% static 'img/top_down.png' %}" alt="悬停显示"/>
+                                {# src="{{ MEDIA_URL }}{{ request.user.image }}"  #}
+                                <img width="20" height="20" src="{% static 'img/user.png' %}" alt=""/>
+                            </dl>
+                            {# 先隐藏 #}
+                            <div class="userdetail">
+                                <div class="user">
+                                    {# src="{{ MEDIA_URL }}{{ request.user.image }}"  #}
+                                    <img width="50px" height="50px" src="{% static 'img/user.png' %}" alt=""/>
+                                    <h2>{{ request.user.username }}</h2>
+                                </div>
+                                <div class="btn">
+                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">个人中心</a>
+                                    <a class="fr" href="{% url 'users:user_logout' %}">退出</a>
+                                </div>
+                            </div>
+                        </div>
+				</div>
+			</div>
+			<!-- header-end -->
+
+
+            <div class="blank"></div>
+        {#    body部分#}
+            <div class="userall">
+                <div class="left">
+                    <ul>
+                        <li class="active2">
+                            <a href="{% url 'users:user_info' %}">个人资料</a>
+                        </li>
+                    </ul>
+                </div>
+
+                {% block content %}{% endblock %}
+            </div>
+
+            <!-- 若事先没有登录直接进入个人中心路径， 则提示先登录  -->
+            {% else %}
+                <div class="defaults">
+                    <h2 style="margin-top: 30px;">请先登录！</h2>
+                    <div class="default-login">
+                        <a class="default-btn" href="{% url 'users:user_login' %}">登  录</a>
+                        <a class="default-btn" href="{% url 'users:register' %}">注  册</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+		<!-- body-end -->
+    </body>
+</html>
+

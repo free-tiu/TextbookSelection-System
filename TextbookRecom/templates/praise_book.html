@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}教材选用系统{% endblock %}
+
+{% block content %}
+<div class="conteiner">
+    <!-- 教材根据默认条件 和 特定条件展示 -->
+    <div class="tbooklist">
+
+        <!-- 图书展示列表 使用遍历将教材展示到页面中  样式在webDemo -->
+        {% for bc in pages %}
+            <a class="tbookli" href="{{ bc.b_href }}">
+                <p>
+                     <img src="{{ bc.src }}"  alt onerror="this.src='#'" />
+                </p>
+                <p class="p1" title="{{ bc.name }}">{{ bc.name }}</p>
+                <p class="p2">
+                    作者：{{ bc.author }}
+                </p>
+                <p class="p3">出版社：{{ bc.press }}</p>
+                <p class="p3">出版时间：{{ bc.date }}</p>
+                <div data-value="0" class="db">{# btn-coll #}
+                    <div class="comment">{{ bc.comment }}条评论</div>    {# 显示评论数 #}
+                    <div class="comment">好评率{{ book.praise }}%</div>
+                    <button  class="btn btn-default collec" type="submit">收藏</button>
+                </div>
+            </a>
+        {% endfor %}
+
+    </div>
+
+    <!--  分页  -->
+    <div class="footer-1">  {# 在webdemo #}
+        <ul>
+            {% if  pages.has_previous %}    {# 判断如果有上一页 #}
+                <li class="long"><a href="/bookclass/comment_book/?pagenum={{ pages.previous_page_number }}">上一页</a></li>
+            {% endif %}
+
+            {% for num in pages.paginator.page_range %}
+                <li {% if num == pages.number %} class="active" {% endif %}>
+                    <a onclick="show_num" href="/bookclass/comment_book/?pagenum={{ num }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+
+            {% if pages.has_next %}     {# 判断如果有下一页 #}
+                <li class="long"><a href="/bookclass/comment_book/?pagenum={{ pages.next_page_number }}">下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+
+        <base href="/">
+        <link rel="stylesheet" href="{% static 'css/freestyle.css' %}" >
+		<link rel="stylesheet" href="{% static 'css/webDemo.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/recommend.css' %}" />
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        {% block mycss %}{% endblock %}
+		<!-- jQuery -->
+		<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+		<!-- Bootstrap 核心 JavaScript 文件 -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <style>
+			html,
+			body {
+			  position: relative;
+			  height: 100%;
+			}
+
+            /* 教材展示部分轮播图 */
+            .swiper-out{
+                transition-duration: 0ms;
+                transform: translate3d(-2675.71px, 0px, 0px);
+            }
+            .swiper-style{
+                min-width: 170px;
+                height: 100%;
+                {#background-color: #f2f2f2;#}
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+		</style>
+    </head>
+
+
+    <body>
+		<div>
+            {% if request.user.is_authenticated %}
+			<!-- header-start --><!-- 头部导航栏 -->
+			<div class="bodyTop bradius">
+				<div class="headers bradius">
+					<!-- logo -->
+					<div class="logo_size bradius">
+						<a href="{% url 'users:index' %}">
+                            <img class="bradius" src="{% static 'img/book.png' %}" />
+                        </a>
+					</div>
+                    <!--  系统名称  -->
+					<div class="text">教材选用推荐系统</div>
+                    <!-- 登录后跳转 -->
+                    {% if request.user.is_authenticated %}
+                        <div class="personal">
+                            <dl class="user">
+                                {{ request.user.username }}
+                                <img src="{% static 'img/top_down.png' %}" alt="悬停显示"/>
+                                <img width="20" height="20" src="{% static 'img/user.png' %}" alt=""/>
+                            </dl>
+                            {# 先隐藏 #}
+                            <div class="userdetail">
+                                <div class="user">
+                                    <img width="50px" height="50px" src="{% static 'img/user.png' %}" alt=""/>
+                                    <h2>{{ request.user.username }}</h2>
+                                </div>
+                                <div class="btn">
+                                    <a class="personcenter fl" href="{% url 'users:user_info' %}">个人中心</a>
+                                    <a class="fr" href="{% url 'users:user_logout' %}">退出</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+					<!-- 登录/注册 -->
+                        <div  class="logins">
+                            <a class="login-1 mr" href="{% url 'users:user_login' %}">登录</a>
+                            <div class="textcent">|</div>
+                            <a class="register ml" href="{% url 'users:register' %}">注册</a>
+                        </div>
+                    {% endif %}
+				</div>
+			</div>
+			<!-- header-end -->
+
+            {% block middle %}
+			
+            <!-- body-start -->
+            <div class="body">
+                <!--  教材搜索  -->
+                <div id="search-2022">
+                    <div class="form">      <!--搜索栏整体-->
+                        <form method="get" action="/search">		<!-- method=“get”代表搜索的关键字以?q=搜索关键字的形式传递后台 -->
+                            {% csrf_token %}
+                            <!--输入框-->
+                            <!-- input标签的name='q',代表搜索的参数，为固定写法，不能修改为其他值。在视图类haystack.views.py中有说明是怎么接受该搜索关键字的 -->
+                            <input type="text" class="text blurcolor" placeholder="  请 输 入 教 材 名 称" name="q">
+                            <!--搜索按钮-->
+                            <input class="search-button cw-icon" type="submit" name="" value="搜索">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+
+            <script>
+                {# 点击展开收起bob #}
+                handle();
+                function handle() {
+                    {#学科分类#}
+                    $(".sitemrr1").on("click", () => {
+                        console.log($(".sitemrr1"));
+                        if ($(".sitemrr1").text() == '更多') {
+                            $(".sitemrr1").text("收起");
+                            $(".sitemr1").css({height: "auto"})
+                        } else {
+                            $(".sitemrr1").text("更多");
+                            $(".sitemr1").css({height: "35px"})
+                        }
+                    })
+                    {# 出版社#}
+                    $(".sitemrr").on("click", () => {
+                        console.log($(".sitemrr"));
+                        if ($(".sitemrr").text() == '更多') {
+                            $(".sitemrr").text("收起");
+                            $(".sitemr").css({height: "auto"})
+                        } else {
+                            $(".sitemrr").text("更多");
+                            $(".sitemr").css({height: "35px"})
+                        }
+                    })
+                }
+            </script>
+
+            {% else %}
+            <div class="defaults">
+                <h2 style="margin-top: 30px;">请先登录！</h2>
+                <div class="default-login">
+                    <a class="default-btn" href="{% url 'users:user_login' %}">登  录</a>
+                    <a class="default-btn" href="{% url 'users:register' %}">注  册</a>
+                </div>
+            </div>
+            {% endif %}
+		</div>
+    </body>
+</html>

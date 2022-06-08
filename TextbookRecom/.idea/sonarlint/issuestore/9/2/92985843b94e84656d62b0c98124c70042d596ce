@@ -1,0 +1,11 @@
+
+rpython:S3776Ã"TRefactor this function to reduce its Cognitive Complexity from 84 to the 15 allowed.(áĞ–Ÿùÿÿÿÿ
+hpython:S107Š"KMethod "search" has 18 parameters, which is greater than the 13 authorized.( Ğàşüÿÿÿÿ
+rpython:S3776«"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(øÖì‚üÿÿÿÿ
+rpython:S3776‰"TRefactor this function to reduce its Cognitive Complexity from 78 to the 15 allowed.(İ·¬ùÿÿÿÿ
+mpython:S3776Ä"TRefactor this function to reduce its Cognitive Complexity from 60 to the 15 allowed.(’¶¾
+mpython:S3776Û"TRefactor this function to reduce its Cognitive Complexity from 33 to the 15 allowed.(Ë¼ ã
+Mpython:S5727ı"4Remove this identity check; it will always be False.(Ë‹ìö
+Qpython:S5727‰"3Remove this identity check; it will always be True.(”üñıÿÿÿÿ
+Hpython:S1066Ë"/Merge this if statement with the enclosing one.(æËäğ
+rpython:S3776ü"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(ÜŒíªûÿÿÿÿ

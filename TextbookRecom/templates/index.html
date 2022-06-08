@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}教材选用系统{% endblock %}
+
+{% block content %}
+<div class="conteiner">
+    <!-- 轮播图 -->
+    <div class="swiper-container swiper-container0">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" >
+                <div class="swiper-slide">
+                    <img style="width:80%;height:100%;margin-left:10%;" src="{% static 'img/750x315-1631690259.jpg' %}" />
+                </div>
+                <div class="swiper-slide">
+                    <img style="width:80%;height:100%;margin-left:10%;" src="{% static 'img/750x315renweijiaocai-1563784800.jpg' %}" />
+                </div>
+                <div class="swiper-slide">
+                    <img style="width:80%;height:100%;margin-left:10%;" src="{% static 'img/9002570174287677.jpg' %}" />
+                </div>
+                <div class="swiper-slide">
+                    <img style="width:80%;height:100%;margin-left:10%;" src="{% static 'img/DD750315.jpg' %}" />
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        });
+    </script>
+    <!-- 轮播图 -->
+
+    <!-- 教材推荐轮播图 -->
+    <div class="recommends">
+        <div style="height:30px;line-height:30px;">
+            <h3 class="re_title">学科综合教材推荐</h3>
+        </div>
+
+        <div class="flex_layout">
+            {# 工学 #}
+            <div class="re_flex">
+                <div class="re_class" name="1">工学</div>
+                <div class="re_books" name="教材列表">
+                {# 轮播图 #}
+                <!-- Swiper -->
+                <div id="swiper-content" style="width:100%;height:100%;overflow:hidden;position:relative;margin-left: 15px;" class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper swiper-out">
+                        {% for gong in gong_book %}
+                            <div class="swiper-slide swiper-style" data-swiper-slide-index="0" >
+                                <div class="tbookli">
+                                    <a  href="{{ gong.b_href }}">
+                                        <img src="{{ gong.src }}"  alt onerror="this.src='{% static 'img/textbook.png' %}'" />
+                                    </a>
+                                    <p class="re_name" style="margin-top:10px;" title="{{ gong.name }}">{{ gong.name }}</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-style" data-swiper-slide-index="4">Slide 1</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="./js/swiper.min.js"></script>
+                <!-- 初始化 Swiper -->
+                <script>
+                    effect = 0
+                    var swiper1 = new Swiper('#swiper-content', {
+                        loop: true,
+                        autoplay:true,
+                        speed: 2500,
+                        slidesPerView: 7,
+                        spaceBetween: 30,
+                        centeredSlides : true,
+                        watchSlidesProgress : true,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+
+                    pe = document.getElementById('progressEffect');
+                    pe.onchange = function(){
+                        effect = this.value
+                        swiper.update();
+                    }
+                </script>
+                </div>
+            </div>
+            {# 理学 #}
+            <div class="re_flex">
+                <div class="re_class" name="4">理学</div>
+                <div class="re_books" name="教材列表">
+                {# 轮播图代码放在这里 #}
+                <!-- Swiper -->
+                <div id="swiper-content" style="width:100%;height:100%;overflow:hidden;position:relative;margin-left: 15px;" class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper swiper-out">
+                        {% for li in li_book %}
+                            <div class="swiper-slide swiper-style" data-swiper-slide-index="0" >
+                                <div class="tbookli">
+                                    <a  href="{{ li.b_href }}">
+                                        <img src="{{ li.src }}"  alt onerror="this.src='{% static 'img/textbook.png' %}'" />
+                                    </a>
+                                    <p class="re_name" style="margin-top:10px;" title="{{ li.name }}">{{ li.name }}</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-style" data-swiper-slide-index="4">Slide 1</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="./js/swiper.min.js"></script>
+                <!-- 初始化 Swiper -->
+                <script>
+                    effect = 0
+                    var swiper1 = new Swiper('#swiper-content', {
+                        loop: true,
+                        autoplay:true,
+                        speed: 2500,
+                        slidesPerView: 7,
+                        spaceBetween: 30,
+                        centeredSlides : true,
+                        watchSlidesProgress : true,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+
+                    pe = document.getElementById('progressEffect');
+                    pe.onchange = function(){
+                        effect = this.value
+                        swiper.update();
+                    }
+                </script>
+                </div>
+            </div>
+            {# 经济管理 #}
+            <div class="re_flex">
+                <div class="re_class" name="2">经济管理</div>
+                <div class="re_books" name="教材列表">
+                {# 轮播图代码在这里 #}
+                <!-- Swiper -->
+                <div id="swiper-content" style="width:100%;height:100%;overflow:hidden;position:relative;margin-left: 15px;" class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper swiper-out">
+                        {% for jing in jing_book %}
+                            <div class="swiper-slide swiper-style" data-swiper-slide-index="0" >
+                                <div class="tbookli">
+                                    <a  href="{{ jing.b_href }}">
+                                        <img src="{{ jing.src }}"  alt onerror="this.src='{% static 'img/textbook.png' %}'" />
+                                    </a>
+                                    <p class="re_name" style="margin-top:10px;" title="{{ jing.name }}">{{ jing.name }}</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-style" data-swiper-slide-index="4">Slide 1</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="./js/swiper.min.js"></script>
+                <!-- 初始化 Swiper -->
+                <script>
+                    effect = 0
+                    var swiper1 = new Swiper('#swiper-content', {
+                        loop: true,
+                        autoplay:true,
+                        speed: 2500,
+                        slidesPerView: 7,
+                        spaceBetween: 30,
+                        centeredSlides : true,
+                        watchSlidesProgress : true,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+
+                    pe = document.getElementById('progressEffect');
+                    pe.onchange = function(){
+                        effect = this.value
+                        swiper.update();
+                    }
+                </script>
+                </div>
+            </div>
+            {# 医学 #}
+            <div class="re_flex">
+                <div class="re_class" name="3">医学</div>
+                <div class="re_books" name="教材列表">
+                {# 轮播图代码在这里 #}
+                <!-- Swiper -->
+                <div id="swiper-content" style="width:100%;height:100%;overflow:hidden;position:relative;margin-left: 15px;" class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper swiper-out">
+                        {% for yi in yi_book %}
+                            <div class="swiper-slide swiper-style" data-swiper-slide-index="0" >
+                                <div class="tbookli">
+                                    <a  href="{{ yi.b_href }}">
+                                        <img src="{{ yi.src }}"  alt onerror="this.src='{% static 'img/textbook.png' %}'" />
+                                    </a>
+                                    <p class="re_name" style="margin-top:10px;" title="{{ yi.name }}">{{ yi.name }}</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-style" data-swiper-slide-index="4">Slide 1</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="./js/swiper.min.js"></script>
+                <!-- 初始化 Swiper -->
+                <script>
+                    effect = 0
+                    var swiper1 = new Swiper('#swiper-content', {
+                        loop: true,
+                        autoplay:true,
+                        speed: 2500,
+                        slidesPerView: 7,
+                        spaceBetween: 30,
+                        centeredSlides : true,
+                        watchSlidesProgress : true,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+
+                    pe = document.getElementById('progressEffect');
+                    pe.onchange = function(){
+                        effect = this.value
+                        swiper.update();
+                    }
+                </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 教材推荐 -->
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+</div>
+
+<div class="index-buttom">
+    <div>
+        @2021 - 2022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhao
+    </div>
+</div>
+{% endblock %}
